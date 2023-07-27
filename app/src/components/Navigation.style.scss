@@ -27,7 +27,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    width: 100%;
+    padding: 10px 10px;
     min-height: 30px;
 
     &-logo {
@@ -50,7 +51,7 @@
             position: absolute;
             height: 3px;
             background: #FFF;
-            // display: block;
+            display: block;
             transition: all .3s cubic-bezier(0.4, 0.0, 0.2, 1);
 
             &-top {
@@ -77,15 +78,17 @@
             }
 
             &-bottom {
+
                 opacity: 0;
-                transform: translateY(-20px) scale(0);
             }
 
             &-middle-1 {
+                top: 6px;
                 transform: rotate(45deg);
             }
 
             &-middle-2 {
+                top: 6px;
                 transform: rotate(-45deg);
             }
         }
@@ -159,9 +162,12 @@
     .main-navbar {
         flex-direction: row;
         justify-content: space-between;
+        padding-right: 30px;
+        padding-left: 10px;
     }
 
     .navbar-container {
+
         &-hamburger {
             display: none;
         }
@@ -172,13 +178,13 @@
             align-items: center;
             overflow: visible;
             gap: 30px;
-            margin-right: 10px;
 
             li {
 
                 a,
                 span {
-                    padding: 0 10px;
+                    white-space: nowrap;
+                    padding: 5px;
                     color: #FFF;
                     text-decoration: none;
 
@@ -187,6 +193,7 @@
                 &:hover .navbar-container-menu-sub-menu,
                 &:hover span.navbar-container-menu-sub-menu--toggled+.navbar-container-menu-sub-menu {
                     max-height: 300px;
+                    top: 46px;
                 }
 
                 a:hover {
@@ -198,11 +205,18 @@
                     scale: 110%;
                     transition: .1s ease-in-out;
                 }
+
+            }
+
+            &-arrow-icon {
+                display: none;
             }
 
             &-sub-menu {
                 position: absolute;
                 left: -10px;
+                top: 46px;
+
                 background: #209AF1;
                 border-bottom-left-radius: 5px;
                 border-bottom-right-radius: 5px;
