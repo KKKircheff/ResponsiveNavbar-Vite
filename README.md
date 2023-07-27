@@ -24,3 +24,10 @@ components/Navigation.component.tsx
 components/Navigation.style.scss
 
 
+pnpm create vite app --template react-ts
+cd app
+pnpm install
+pnpm install react-icons
+pnpm add sass
+pnpm add react-router-dom localforage match-sorter sort-by
+
