@@ -21,25 +21,30 @@ const Navigation = ({ items }: NavigationProps) => {
     }
 
     const toggleSubMenu = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-        event.currentTarget.classList.toggle('toggled');
+        event.currentTarget.classList.toggle('navbar-container-menu-sub-menu--toggled');
     }
 
     const renderItems = () => items.map((item, index) => (
         <li key={index}>
             {item.url
-                ? <Link to={item.url} onClick={() => closeMenu(true)}>{item.name}</Link>
-                : <span onClick={toggleSubMenu}>
+                ? <Link to={item.url} onClick={() => closeMenu(true)}>
                     {item.name}
-                    <FaAngleDown className='main-navbar-submenu-dropdown-icon' />
-                </span>
+                </Link>
+                : <div onClick={toggleSubMenu} className='navbar-container-menu-item'>
+                    <span>
+                        {item.name}
+                        <FaAngleDown className='navbar-container-menu-arrow-icon' />
+                    </span>
+                    {item.children && renderChildren(item.children)}
+                </div>
             }
-            {item.children && renderChildren(item.children)}
+
         </li>
 
     ))
 
     const renderChildren = (children: Item[]) => (
-        <ul className="navbar-container-menu-sub-menu">
+        <ul className="navbar-container-menu-sub-menu navbar-container-menu-sub-menu--toggled">
             {children.map((child, index) => (
                 <li key={index}>
                     <Link to={child.url!} onClick={() => closeMenu(true)}>
@@ -52,7 +57,6 @@ const Navigation = ({ items }: NavigationProps) => {
 
     const closeMenu = (closeSubMenu = false) => {
         setIsToggled(false);
-
         if (closeSubMenu && window.innerWidth > screenSizes.small) {
             setCloseSubMenu(true)
             setTimeout(() => setCloseSubMenu(false), 0)
@@ -77,8 +81,11 @@ const Navigation = ({ items }: NavigationProps) => {
 
                 </div>
             </div>
-            <ul
-                className={['navbar-container-menu', isToggled && 'navbar-container-menu--active', closeSubMenu && 'navbar-container-menu-sub-menu'].filter(Boolean).join(' ')}
+            <ul className={['navbar-container-menu',
+                isToggled && 'navbar-container-menu--active',
+                closeSubMenu && 'navbar-container-menu-sub-menu--toggled',
+            ]
+                .filter(Boolean).join(' ')}
             >{renderItems()}</ul>
         </nav>
     )
