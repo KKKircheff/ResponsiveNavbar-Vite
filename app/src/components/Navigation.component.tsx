@@ -21,7 +21,7 @@ const Navigation = ({ items }: NavigationProps) => {
     }
 
     const toggleSubMenu = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-        event.currentTarget.classList.toggle('navbar-container-menu-sub-menu--toggled');
+        event.currentTarget.classList.toggle('navbar-container__menu-sub-menu--toggled');
     }
 
     const renderItems = () => items.map((item, index) => (
@@ -30,10 +30,10 @@ const Navigation = ({ items }: NavigationProps) => {
                 ? <Link to={item.url} onClick={() => closeMenu(true)}>
                     {item.name}
                 </Link>
-                : <div onClick={toggleSubMenu} className='navbar-container-menu-item'>
+                : <div onClick={toggleSubMenu} className='navbar-container__menu-item'>
                     <span>
                         {item.name}
-                        <FaAngleDown className='navbar-container-menu-arrow-icon' />
+                        <FaAngleDown className='navbar-container__menu-arrow-icon' />
                     </span>
                     {item.children && renderChildren(item.children)}
                 </div>
@@ -44,7 +44,7 @@ const Navigation = ({ items }: NavigationProps) => {
     ))
 
     const renderChildren = (children: Item[]) => (
-        <ul className="navbar-container-menu-sub-menu navbar-container-menu-sub-menu--toggled">
+        <ul className="navbar-container__menu-sub-menu navbar-container__menu-sub-menu--toggled">
             {children.map((child, index) => (
                 <li key={index}>
                     <Link to={child.url!} onClick={() => closeMenu(true)}>
@@ -66,24 +66,23 @@ const Navigation = ({ items }: NavigationProps) => {
     return (
         <nav className='main-navbar'>
             <div className="navbar-container">
-                <div className="navbar-container-logo">
+                <div className="navbar-container__logo">
                     <FaReact /><span> + </span><TbBrandTypescript />
                 </div>
                 <div
-                    className={`navbar-container-hamburger`}
+                    className={`navbar-container__hamburger`}
                     onClick={() => setIsToggled(!isToggled)}
                 >
-                    {/* <span className={`navbar-container-hamburger${isToggled ? '--close' : ''}-burger-bar`}></span> */}
-                    <span className={`navbar-container-hamburger-burger-bar navbar-container-hamburger${isToggled ? '--close' : ''}-burger-bar-top`}></span>
-                    <span className={`navbar-container-hamburger-burger-bar navbar-container-hamburger${isToggled ? '--close' : ''}-burger-bar-middle-1`}></span>
-                    <span className={`navbar-container-hamburger-burger-bar navbar-container-hamburger${isToggled ? '--close' : ''}-burger-bar-middle-2`}></span>
-                    <span className={`navbar-container-hamburger-burger-bar navbar-container-hamburger${isToggled ? '--close' : ''}-burger-bar-bottom`}></span>
+                    <span className={`navbar-container__hamburger-burger-bar navbar-container__hamburger${isToggled ? '--close' : ''}-burger-bar-top`}></span>
+                    <span className={`navbar-container__hamburger-burger-bar navbar-container__hamburger${isToggled ? '--close' : ''}-burger-bar-middle-1`}></span>
+                    <span className={`navbar-container__hamburger-burger-bar navbar-container__hamburger${isToggled ? '--close' : ''}-burger-bar-middle-2`}></span>
+                    <span className={`navbar-container__hamburger-burger-bar navbar-container__hamburger${isToggled ? '--close' : ''}-burger-bar-bottom`}></span>
 
                 </div>
             </div>
-            <ul className={['navbar-container-menu',
-                isToggled && 'navbar-container-menu--active',
-                closeSubMenu && 'navbar-container-menu-sub-menu--toggled',
+            <ul className={['navbar-container__menu',
+                isToggled && 'navbar-container__menu--active',
+                closeSubMenu && 'navbar-container__menu-sub-menu--toggled',
             ]
                 .filter(Boolean).join(' ')}
             >{renderItems()}</ul>

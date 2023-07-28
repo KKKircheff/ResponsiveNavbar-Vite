@@ -31,14 +31,14 @@
     padding: 10px 10px;
     min-height: 30px;
 
-    &-logo {
+    &__logo {
         display: flex;
         align-items: center;
         color: white;
         font-size: 2rem;
     }
 
-    &-hamburger {
+    &__hamburger {
         position: relative;
         width: 30px;
         height: 20px;
@@ -94,7 +94,7 @@
         }
     }
 
-    &-menu {
+    &__menu {
         display: flex;
         flex-direction: column;
         gap: 5px;
@@ -168,11 +168,11 @@
 
     .navbar-container {
 
-        &-hamburger {
+        &__hamburger {
             display: none;
         }
 
-        &-menu {
+        &__menu {
             max-height: none;
             flex-direction: row;
             align-items: center;
@@ -190,8 +190,8 @@
 
                 }
 
-                &:hover .navbar-container-menu-sub-menu,
-                &:hover span.navbar-container-menu-sub-menu--toggled+.navbar-container-menu-sub-menu {
+                &:hover .navbar-container__menu-sub-menu,
+                &:hover span.navbar-container__menu-sub-menu--toggled+.navbar-container__menu-sub-menu {
                     max-height: 300px;
                     top: 46px;
                 }
